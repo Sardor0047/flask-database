@@ -54,7 +54,9 @@ def get_between_price():
     """Returns a products between max_price and min_price
     get max_price and min_price from query_string
     """
-    return {'prices':db.get_between_price()}
+    min_p = float(request.args.get('min_price'))
+    max_p = float(request.args.get('max_price'))
+    return {'prices':db.get_between_price(max_p,min_p)}
 
 # view add product
 @app.route('/products/add', methods=['POST'])

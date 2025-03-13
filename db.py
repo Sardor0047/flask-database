@@ -40,11 +40,9 @@ class ProductsDB:
         sort = sorted(self.table.all(), key = itemgetter('price'),reverse=True)
         return sort[:3]
     
-    def get_between_price(self):
+    def get_between_price(self,max_price , min_price):
         """Returns a products between max_price and min_price"""
-        from operator import itemgetter
-        sort = sorted(self.table.all(), key = itemgetter('price'),reverse=True)
-        return [sort[-1],sort[0]]
+        return self.table.search((self.query.price >= min_price) & (self.query.price <= max_price))
 
     def add_product(self, product):
         """Adds a product to the database"""
