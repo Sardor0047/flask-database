@@ -60,12 +60,13 @@ def get_between_price():
 @app.route('/products/add', methods=['POST'])
 def add_products():
     """Adds a product to the database"""
-    pass
-
+    data = request.get_json()
+    return db.add_product(data)
 
 # view delete product
 @app.route('/products/delete/<doc_id>', methods=['DELETE'])
 def delete_product(doc_id):
+
     """Deletes a product from the database"""
     return {'remove': db.delete_product(doc_id)}
 

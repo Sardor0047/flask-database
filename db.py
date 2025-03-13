@@ -40,9 +40,11 @@ class ProductsDB:
         sort = sorted(self.table.all(), key = itemgetter('price'),reverse=True)
         return sort[:3]
     
-    def get_between_price(self, max_price, min_price):
+    def get_between_price(self):
         """Returns a products between max_price and min_price"""
-        return self.table.search((self.query.price > min_price) & (self.query.price < max_price))
+        from operator import itemgetter
+        sort = sorted(self.table.all(), key = itemgetter('price'),reverse=True)
+        return [sort[-1],sort[0]]
 
     def add_product(self, product):
         """Adds a product to the database"""
@@ -50,7 +52,7 @@ class ProductsDB:
 
     def delete_product(self, doc_id):
         """Deletes a product from the database"""
-        return self.table.remove(self.query.doc_id == doc_id)
+        return self.table.remove(self.query.id == doc_id)
 
 #db = ProductsDB('products_db.json')
 #print(db.get_product_id(1))

@@ -700,5 +700,14 @@
             "category": "gaming",
             "description": "4K Ultra HD monitor"
         }
+    },
+    "_default": {
+        "1": {
+            "category": "relaxing",
+            "description": "Ergonomic wireless mouse",
+            "id": 101,
+            "name": "Headphones",
+            "price": 123.64
+        }
     }
 }
