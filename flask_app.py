@@ -9,7 +9,7 @@ db = ProductsDB('products_db.json')
 @app.route('/products', methods=['GET'])
 def get_all_products():
     """Returns all products in the database"""
-    return db.all_products()
+    return {"All products:":db.all_products()}
 
 # view all product by id
 @app.route('/products/id/<int:id>', methods=['GET'])
